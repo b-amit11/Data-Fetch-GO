@@ -8,9 +8,9 @@ RUN apk update && apk add --no-cache ca-certificates && update-ca-certificates
 COPY go.mod ./
 RUN go mod download
 
-COPY cmd ./cmd
+COPY main.go ./
 ENV CGO_ENABLED=0
-RUN go build -o /app/app ./cmd/app
+RUN go build -o /app/app .
 
 # ---- Runtime stage ----
 FROM alpine:3.20
